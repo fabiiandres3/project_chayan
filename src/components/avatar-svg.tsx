@@ -33,31 +33,31 @@ export function AvatarSVG({ config, size = 160 }: { config: AvatarConfig; size?:
     mood: config.mood ?? "happy",
   }), [config]);
 
-  // Contorno negro grueso estándar para el estilo Kawaii
+  // Contorno negro limpio y estilizado para estética Anime/Kawaii moderna
   const strokeProps = {
     stroke: "#1A1A1A",
-    strokeWidth: "3.5",
+    strokeWidth: "3",
     strokeLinejoin: "round" as const,
     strokeLinecap: "round" as const,
   };
 
   return (
     <svg 
-      viewBox="15 10 170 180" 
+      viewBox="10 10 180 270" 
       width={size} 
       height={size} 
-      className="drop-shadow-sm w-full h-full object-contain block scale-105"
+      className="drop-shadow-sm w-full h-full object-contain block"
     >
-      <rect x="15" y="10" width="170" height="180" fill="none" />
+      <rect x="10" y="10" width="180" height="270" fill="none" />
 
-      {/* DETRÁS DEL CUERPO: Cabello Largo Trasero */}
+      {/* DETRÁS DEL CUERPO: Cabello Largo Trasero Extendido */}
       {c.hair === "long" && (
-        <path d="M45 75 Q20 130 45 165 Q100 175 155 165 Q180 130 155 75 Z" fill={c.hairColor} {...strokeProps} />
+        <path d="M48 70 Q15 130 35 180 Q100 195 165 180 Q185 130 152 70 Z" fill={c.hairColor} {...strokeProps} />
       )}
       {c.hair === "ponytail" && (
         <g transform="translate(35, 25)">
-          <path d="M115 50 C150 30 170 60 160 95 C135 115 115 90 115 70 Z" fill={c.hairColor} {...strokeProps} />
-          <path d="M117 65 Q130 55 142 75" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
+          <path d="M115 50 C155 30 180 65 165 110 C135 135 115 100 115 70 Z" fill={c.hairColor} {...strokeProps} />
+          <path d="M117 65 Q135 55 148 80" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
         </g>
       )}
       {c.hair === "buns" && (
@@ -67,55 +67,77 @@ export function AvatarSVG({ config, size = 160 }: { config: AvatarConfig; size?:
         </g>
       )}
 
-      {/* PIES Y ZAPATOS */}
+      {/* PIES Y ZAPATOS (Tenis modernos/estilizados de la referencia) */}
       <g>
         {/* Zapato Izquierdo */}
-        <ellipse cx="78" cy="190" rx="18" ry="10" fill="#2C1810" {...strokeProps} />
-        <ellipse cx="78" cy="186" rx="18" ry="5" fill="#FFF" opacity="0.3" />
+        <path d="M70 255 C70 245 88 245 92 255 L92 265 C92 268 70 268 70 265 Z" fill="#FFF" {...strokeProps} />
+        <path d="M70 260 L92 260" fill="none" stroke="#1A1A1A" strokeWidth="2" />
         {/* Zapato Derecho */}
-        <ellipse cx="122" cy="190" rx="18" ry="10" fill="#2C1810" {...strokeProps} />
-        <ellipse cx="122" cy="186" rx="18" ry="5" fill="#FFF" opacity="0.3" />
+        <path d="M108 255 C108 245 126 245 130 255 L130 265 C130 268 108 268 108 265 Z" fill="#FFF" {...strokeProps} />
+        <path d="M108 260 L130 260" fill="none" stroke="#1A1A1A" strokeWidth="2" />
       </g>
 
-      {/* PIERNAS CORTAS */}
-      <rect x="72" y="165" width="14" height="22" fill={c.skin} {...strokeProps} />
-      <rect x="114" y="165" width="14" height="22" fill={c.skin} {...strokeProps} />
-
-      {/* BRAZOS */}
-      <g>
-        {/* Brazo Izquierdo */}
-        <path d="M55 138 Q30 152 37 168 Q47 172 55 156 Z" fill={c.skin} {...strokeProps} />
-        {c.outfit !== "dress" && <path d="M55 138 Q42 148 46 157" fill={c.outfitColor} {...strokeProps} />}
-        
-        {/* Brazo Derecho */}
-        <path d="M145 138 Q170 152 163 168 Q153 172 145 156 Z" fill={c.skin} {...strokeProps} />
-        {c.outfit !== "dress" && <path d="M145 138 Q158 148 154 157" fill={c.outfitColor} {...strokeProps} />}
-      </g>
-
-      {/* CUERPO PEQUEÑO (Ropa) */}
+      {/* PIERNAS HUMANAS ESTILIZADAS (Pantalón / Jean de la referencia) */}
       <g>
         {c.outfit === "dress" ? (
-          <path d="M60 136 L42 176 L158 176 L140 136 Z" fill={c.outfitColor} {...strokeProps} />
-        ) : c.outfit === "jacket" ? (
+          // Piernas descubiertas si usa vestido
           <>
-            <rect x="56" y="134" width="88" height="36" rx="11" fill={c.outfitColor} {...strokeProps} />
-            <line x1="100" y1="134" x2="100" y2="170" stroke="#1A1A1A" strokeWidth="2.5" />
-            <circle cx="93" cy="152" r="3" fill="#FFF" />
+            <rect x="76" y="185" width="14" height="72" fill={c.skin} {...strokeProps} />
+            <rect x="110" y="185" width="14" height="72" fill={c.skin} {...strokeProps} />
           </>
         ) : (
-          <rect x="56" y="134" width="88" height="36" rx="11" fill={c.outfitColor} {...strokeProps} />
-        )}
-
-        {/* Detalle Hoodie */}
-        {c.outfit === "hoodie" && (
-          <path d="M72 134 Q100 152 128 134" fill="none" stroke="#1A1A1A" strokeWidth="3" strokeLinecap="round" />
+          // Jeans estilizados con dobleces inferiores
+          <>
+            <path d="M74 174 L70 255 L88 255 L94 185 Z" fill="#93BBE6" {...strokeProps} />
+            <path d="M126 174 L130 255 L112 255 L106 185 Z" fill="#93BBE6" {...strokeProps} />
+            {/* Detalles de doblez del jean */}
+            <rect x="70" y="250" width="18" height="5" fill="#EAEAEA" stroke="#1A1A1A" strokeWidth="2" />
+            <rect x="112" y="250" width="18" height="5" fill="#EAEAEA" stroke="#1A1A1A" strokeWidth="2" />
+          </>
         )}
       </g>
 
-      {/* CUELLO RECTANGULAR CHICO */}
-      <rect x="91" y="120" width="18" height="16" fill={c.skin} {...strokeProps} />
+      {/* BRAZOS ESTILIZADOS (Caídos de forma natural al costado) */}
+      <g>
+        {/* Brazo Izquierdo */}
+        <path d="M54 135 L44 200 Q44 208 52 208 Q60 208 58 200 L64 145 Z" fill={c.skin} {...strokeProps} />
+        {c.outfit !== "dress" && <path d="M54 135 L45 188 L57 188 L62 142 Z" fill={c.outfitColor} {...strokeProps} />}
+        
+        {/* Brazo Derecho */}
+        <path d="M146 135 L156 200 Q156 208 148 208 Q140 208 142 200 L136 145 Z" fill={c.skin} {...strokeProps} />
+        {c.outfit !== "dress" && <path d="M146 135 L155 188 L143 188 L138 142 Z" fill={c.outfitColor} {...strokeProps} />}
+      </g>
 
-      {/* CABEZA ENORME CHIBI */}
+      {/* CUERPO PROPORCIONADO (Prendas de vestir estilizadas) */}
+      <g>
+        {c.outfit === "dress" ? (
+          <path d="M62 134 L50 195 L150 195 L138 134 Z" fill={c.outfitColor} {...strokeProps} />
+        ) : c.outfit === "jacket" ? (
+          <>
+            <path d="M58 134 L54 182 L146 182 L142 134 Z" fill={c.outfitColor} {...strokeProps} />
+            <line x1="100" y1="134" x2="100" y2="182" stroke="#1A1A1A" strokeWidth="2.5" />
+            {/* Línea abierta de chaqueta */}
+            <path d="M92 134 L100 155 L108 134" fill="none" stroke="#1A1A1A" strokeWidth="2.5" />
+          </>
+        ) : (
+          // Sudadera / Hoodie / Camiseta moderna alargada
+          <path d="M58 134 L54 180 L146 180 L142 134 Z" fill={c.outfitColor} {...strokeProps} />
+        )}
+
+        {/* Cuerdas y detalles de Hoodie */}
+        {c.outfit === "hoodie" && (
+          <>
+            <path d="M76 134 Q100 148 124 134" fill="none" stroke="#1A1A1A" strokeWidth="2.5" />
+            <line x1="94" y1="138" x2="94" y2="152" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
+            <line x1="106" y1="138" x2="106" y2="152" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
+          </>
+        )}
+      </g>
+
+      {/* CUELLO ESTILIZADO */}
+      <rect x="93" y="118" width="14" height="20" fill={c.skin} {...strokeProps} />
+
+      {/* LA CARA ACTUAL (Mantenida EXACTAMENTE IGUAL como pediste) */}
       <rect x="48" y="36" width="104" height="96" rx="46" fill={c.skin} {...strokeProps} />
 
       {/* MEJILLAS SONROJADAS KAWAII */}
@@ -126,11 +148,9 @@ export function AvatarSVG({ config, size = 160 }: { config: AvatarConfig; size?:
       <g>
         {c.eyes === "normal" && (
           <>
-            {/* Ojo Izquierdo */}
             <ellipse cx="73" cy="91" rx="10" ry="13" fill="#1A1A1A" />
             <circle cx="71" cy="85" r="4" fill="#FFF" />
             <circle cx="76" cy="95" r="1.5" fill="#FFF" />
-            {/* Ojo Derecho */}
             <ellipse cx="127" cy="91" rx="10" ry="13" fill="#1A1A1A" />
             <circle cx="125" cy="85" r="4" fill="#FFF" />
             <circle cx="130" cy="95" r="1.5" fill="#FFF" />
