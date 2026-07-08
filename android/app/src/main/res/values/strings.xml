@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Hey Ely</string>
+    <string name="title_activity_main">Hey Ely</string>
+    <string name="package_name">com.heyely.app</string>
+    <string name="custom_url_scheme">com.heyely.app</string>
+</resources>
